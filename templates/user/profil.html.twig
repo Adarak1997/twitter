@@ -1,3 +1,11 @@
-{% for user in users%}
-    {{ user.name }}
-{% endfor %}
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ app.user.username }}
+{{ app.user.firstname }}
+{{ app.user.name }}
+{{ app.user.email }}
+{{ app.user.birthdate |date("m/d/Y") }}
+<br>
+<a href="{{ path('user_update', {'id': app.user.id}) }}">Editer</a>
+
+{% endblock %}

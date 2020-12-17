@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ app.user.username }}
+
+{{ app.user.birthdate |date("m/d/Y") }}
+
+    <div class="card">
+    <div class="card-header">
+        Publiez votre tweet
+    </div>
+    <div class="card-body">
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+
+    </div>
+    </div>
+
+    <section class="footer">
+        <div class="container text-center">
+            <h2>Twitter</h2>
+            <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>
+        </div>
+    </section>
+{% endblock%}
