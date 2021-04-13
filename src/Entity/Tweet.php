@@ -29,7 +29,7 @@ class Tweet
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="tweets")
-     * @ORM\JoinColumn(name="users_id", referencedColumnName="users_id")
+     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $users;
 

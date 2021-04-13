@@ -1,0 +1,68 @@
+@import url('css/homepage.css');
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+body {
+    background-color: #000;
+}
+
+a {
+    color: #00acee;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #0074a2;
+}
+
+button {
+    border: none;
+}
+
+.h1, h2, h3, h4, h5, strong, p, li, label {
+    color: #fff;
+}
+
+.btn-theme  {
+    background-color: #00acee ;
+    color: #fff;
+    border-radius: 30px;
+    padding:  10px 60px;
+    display: block;
+    -webkit-transition: all 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+
+.btn-theme.dark {
+    background-color: #000;
+    border: 1px solid #00acee ;
+    color: #00acee ;
+}
+
+.btn-theme:hover {
+    background-color: #008dc2;
+    color: #fff;
+}
+
+.btn-theme.dark:hover {
+    background-color: rgba(29, 161, 242, 0.2);
+    color: #00acee;
+}
+
+.link_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link_form a {
+    color: #008dc2;
+    margin-right: 20px;
+    -webkit-transition: all 0.3s;
+}
+
+a:hover {
+    color: #0074a2;
+}

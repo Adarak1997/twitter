@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Twitter. C'est ce qui se passe.{% endblock %}
+
+{% block body %}
+    <section class="homepage">
+        <div class="section_img">
+            <img src="{{ asset('img/icon/twitter_white.png') }}">
+        </div>
+        <div class="section_account">
+            <img src="{{ asset('img/icon/twitter_white.png') }}">
+            <h1>Ça se passe<br> maintenant</h1>
+            <h4>Rejoignez Twitter dès aujourd'hui.</h4>
+            <a class="btn-theme" href="{{ path('inscription') }}">S'inscrire</a>
+            <a class="btn-theme dark" href="{{ path('app_login') }}">Se connecter</a>
+        </div>
+    </section>
+{% endblock %}

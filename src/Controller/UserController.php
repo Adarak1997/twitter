@@ -107,7 +107,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/", name="inscription")
+     * @Route("/inscription", name="inscription")
      */
     public function signin(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {

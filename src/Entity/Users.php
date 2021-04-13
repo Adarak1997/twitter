@@ -66,8 +66,6 @@ class Users implements UserInterface
         $this->tweets = new ArrayCollection();
     }
 
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -218,6 +216,5 @@ class Users implements UserInterface
 
         return $this;
     }
-
 
 }
