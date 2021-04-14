@@ -16,7 +16,33 @@
     </div>
     </div>
 
-    <section class="footer">
+    <div id="fil_actualite">
+    <h2 style="text-align: center;margin-top: 2%">Fil d'actualité</h2>
+    <br>
+
+    {% for tweet in tweets %}
+
+    <div id="actualite">
+        <p style="font-weight: bold; margin-top: 2%">
+
+        <img src="{{ asset('image_tweet/avatar_default.png') }}" alt="Avatar" class="avatar">
+        {{ app.user.username }}</p>
+        <p style="">{{ tweet.text }}</p>
+        {% if tweet.image != null %}
+        <img src="{{ asset('image_tweet/'~tweet.image) }}" class="image_tweet">
+
+        {% endif %}
+
+
+    </div>
+        <br>
+    {% endfor %}
+    </div>
+
+
+
+
+    <section class="footer" style="position: relative">
         <div class="container text-center">
             <h2>Twitter</h2>
             <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>

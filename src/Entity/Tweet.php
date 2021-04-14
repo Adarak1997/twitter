@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TweetRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=TweetRepository::class)
  */
@@ -28,8 +29,8 @@ class Tweet
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="tweets")
-     * @ORM\JoinColumn(name="users_id", referencedColumnName="users_id")
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="tweets", cascade={"remove"})
+     * @ORM\JoinColumn(name="users_id", onDelete="CASCADE")
      */
     private $users;
 

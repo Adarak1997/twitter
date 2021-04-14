@@ -7,5 +7,6 @@
 {{ app.user.birthdate |date("m/d/Y") }}
 <br>
 <a href="{{ path('user_update', {'id': app.user.id}) }}">Editer</a>
+    <a href="{{ path('user_delete', {'id': app.user.id}) }}">Supprimer le compte</a>
 
 {% endblock %}

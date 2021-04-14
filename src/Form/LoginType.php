@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -23,7 +24,9 @@ class LoginType extends AbstractType
             ->add('name')
             ->add('email')
             ->add('password', PasswordType::class)
-            ->add('birthdate')
+            ->add('birthdate', DateType::class, [
+                'widget' => 'single_text',
+            ])
             ->add('submit', SubmitType::class)
             
         ;
