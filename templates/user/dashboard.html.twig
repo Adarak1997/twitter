@@ -1,25 +1,49 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{{ app.user.username }}
+    {#{{ app.user.username }}#}
 
-{{ app.user.birthdate |date("m/d/Y") }}
+    {#{{ app.user.birthdate |date("m/d/Y") }}#}
 
-    <div class="card">
-    <div class="card-header">
-        Publiez votre tweet
-    </div>
-    <div class="card-body">
-        {{ form_start(form) }}
+    {#    <div class="card">#}
+    {#    <div class="card-header">#}
+    {#        Publiez votre tweet#}
+    {#    </div>#}
+    {#    <div class="card-body">#}
 
-        {{ form_end(form) }}
+    {#    </div>#}
+    {#    </div>#}
 
-    </div>
-    </div>
+    {% include '_partials/slider_bar.html.twig' %}
 
-    <section class="footer">
-        <div class="container text-center">
-            <h2>Twitter</h2>
-            <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>
+    <section class="feed">
+        <div class="title">
+            <h1>Accueil</h1>
+        </div>
+        <div class="whats_up">
+            <div class="icon">
+                <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+            </div>
+            <div class="tweet_form">
+                {{ form_start(form) }}
+                    {{ form_row(form.text) }}
+                <div class="form_row d-flex">
+                    <div class="file_wrapper">
+                        <i class="fa fa-image"></i>
+                        {{ form_row(form.image) }}
+                    </div>
+                    <div class="button" style="margin-left: auto">
+                        {{ form_row(form.submit) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
         </div>
     </section>
-{% endblock%}
+
+    {#    <section class="footer">#}
+    {#        <div class="container text-center">#}
+    {#            <h2>Twitter</h2>#}
+    {#            <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>#}
+    {#        </div>#}
+    {#    </section>#}
+{% endblock %}

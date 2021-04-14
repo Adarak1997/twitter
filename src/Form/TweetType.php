@@ -23,15 +23,25 @@ class TweetType extends AbstractType
                     new Length([
                         "max" => 144
                     ])
-                )
+                ),
+                'attr' => [
+                    'placeholder' => 'Quoi de neuf ?'
+                ],
+                'label' => false,
             ))
             ->add('image', FileType::class, array(
-                'required' => false
-
-
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'class' => 'file_input '
+                ],
             ))
 
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn-theme '
+                ],
+            ])
         ;
     }
 
