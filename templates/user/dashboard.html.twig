@@ -9,10 +9,11 @@
         Publiez votre tweet
     </div>
     <div class="card-body">
-        {{ form_start(form) }}
+        {{ form_start(form, {'attr': {'id': 'formID'}}) }}
 
         {{ form_end(form) }}
 
+        <p id="reussite" style="background-color: black">réussite</p>
     </div>
     </div>
 
@@ -27,7 +28,7 @@
 
         <img src="{{ asset('image_tweet/avatar_default.png') }}" alt="Avatar" class="avatar">
         {{ app.user.username }}</p>
-        <p style="">{{ tweet.text }}</p>
+        <p style="background-color: black">{{ tweet.text }}</p>
         {% if tweet.image != null %}
         <img src="{{ asset('image_tweet/'~tweet.image) }}" class="image_tweet">
 
@@ -48,4 +49,35 @@
             <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>
         </div>
     </section>
+
+    {% block javascripts %}
+
+        <script>
+
+            $('#reussite').hide();
+            $('#formID').on('submit', function(e) {
+                e.preventDefault();
+
+                var formulaire = $(this);
+                var post_type = formulaire.attr('method');
+                var post_url = formulaire.attr('action');
+                var post_data = formulaire.serialize();
+
+
+                $.ajax({
+                    type: post_type,
+                    url: post_url,
+                    data: post_data,
+                    success: function(data) {
+
+                        alert(data);
+
+                    }
+                });
+
+            });
+        </script>
+    {% endblock %}
 {% endblock%}
+
+

@@ -1,0 +1,71 @@
+.homepage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.homepage .section_img {
+    background-image: url(../img/core-img/bg_img_hompage.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    height: 100%;
+}
+
+.homepage .section_img img {
+    width: 30%;
+}
+
+.homepage .section_account {
+    padding: 40px;
+    background-color: #000;
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.homepage .section_account img {
+    width: 8%;
+    margin-bottom: 60px;
+}
+
+.homepage .section_account h1 {
+    color: #fff;
+    font-size: 70px;
+    margin-bottom: 60px;
+    font-weight: bold;
+}
+
+.homepage .section_account h4 {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.homepage .section_account .btn-theme {
+    margin-bottom: 20px;
+    max-width: 380px;
+}
+
+@media (max-width: 991px) {
+    .homepage .section_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .homepage .section_account {
+        width: 100%;
+        height: 60%;
+    }
+
+}

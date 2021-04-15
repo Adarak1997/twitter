@@ -8,6 +8,7 @@ use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Users;
 use App\Form\LoginType;
@@ -48,6 +49,24 @@ class UserController extends AbstractController
             dump($userid);
 
         $allTweet = $this->getDoctrine()->getRepository(Tweet::class)->findBy(['users' => $userid ]);
+
+        $html = " <h2 style='text-align: center;margin-top: 2%'>Fil d'actualité</h2> <br>";
+
+
+
+        foreach ($allTweet as $item) {
+            $html .= "<div id='actualite'>
+        <p style='font-weight: bold; margin-top: 2%'>
+      <img src='' alt='Avatar' class='avatar'>
+        {{ app.user.username }}</p>
+        <p style='background-color: black'>".$item->getText()."</p>
+
+
+    </div>
+        <br>";
+        }
+
+
         dump($allTweet);
 
 
@@ -56,7 +75,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         //3-Prévoir ce qui doit se passer après la validation du formulaire (ajout dans la bdd)
-        if($form->isSubmitted() and $form->isValid()){
+        if($request->isXmlHttpRequest()){
             //Récupérer l'entityManager (doctrine)
             $em = $this->getDoctrine()->getManager();
 
@@ -75,8 +94,20 @@ class UserController extends AbstractController
             $em->persist($tweet);
             $em->flush();
 
+            $html .= "<div id='actualite'>
+        <p style='font-weight: bold; margin-top: 2%'>
+      <img src='' alt='Avatar' class='avatar'>
+        {{ app.user.username }}</p>
+        <p style='background-color: black'>".$tweet->getText()."</p>
+    
 
-            return $this->redirectToRoute("user_dashboard");
+    </div>
+        <br>";
+
+            $this->addFlash('success', 'succès');
+            return new JsonResponse($tweet->getImage());
+
+
         }
 
 
@@ -153,7 +184,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/", name="inscription")
+     * @Route("/inscription", name="test")
      */
     public function signin(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {

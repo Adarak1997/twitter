@@ -29,8 +29,13 @@ class Tweet
     private $image;
 
     /**
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="tweets", cascade={"remove"})
      * @ORM\JoinColumn(name="users_id", onDelete="CASCADE")
+=======
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="tweets")
+     * @ORM\JoinColumn(name="id", referencedColumnName="id")
+>>>>>>> 84ac1062a1cd2df3559233c5be6e87b7b8b4fb60
      */
     private $users;
 

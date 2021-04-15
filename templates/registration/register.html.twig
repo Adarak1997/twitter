@@ -1,21 +1,43 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
-
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="form_login">
+                    <div class="w-100 text-center">
+                        <img src="{{ asset('img/icon/twitter_white.png') }}" style="width: 10%" class="mb-5">
+                    </div>
+                    <h1 class="mb-3" style="color: #fff;">Créer votre compte</h1>
+                    {{form_start(registrationForm)}}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            {{ form_row(registrationForm.username) }}
+                        </div>
+                        <div class="col-lg-6">
+                            {{ form_row(registrationForm.firstname) }}
+                        </div>
+                        <div class="col-lg-6">
+                            {{ form_row(registrationForm.name) }}
+                        </div>
+                        <div class="col-lg-12">
+                            {{ form_row(registrationForm.birthdate) }}
+                        </div>
+                        <div class="col-lg-12">
+                            {{ form_row(registrationForm.email) }}
+                        </div>
+                        <div class="col-lg-12">
+                            {{ form_row(registrationForm.plainPassword) }}
+                        </div>
+                        <div class="col-lg-12">
+                            {{ form_row(registrationForm.submit) }}
+                        </div>
+                    </div>
+                    {{form_end(registrationForm)}}
+                    <p>Déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

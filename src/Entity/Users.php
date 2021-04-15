@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class Users implements UserInterface
 {
@@ -67,8 +67,6 @@ class Users implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
-
-
 
 
 
@@ -143,6 +141,19 @@ class Users implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 
     public function getFirstname(): ?string
@@ -222,8 +233,6 @@ class Users implements UserInterface
 
         return $this;
     }
-
-
 
 
 
