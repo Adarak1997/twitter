@@ -40,10 +40,7 @@ class UserController extends AbstractController
     public function user_dashboard(Request $request, UsersRepository $repository, UserInterface $user, UploaderHelper $uploaderHelper)
     {
 
-
             $tweet = new Tweet();
-
-
 
             $userid = $user->getId();
             dump($userid);
@@ -51,7 +48,6 @@ class UserController extends AbstractController
         $allTweet = $this->getDoctrine()->getRepository(Tweet::class)->findBy(['users' => $userid ]);
 
         $html = " <h2 style='text-align: center;margin-top: 2%'>Fil d'actualité</h2> <br>";
-
 
 
         foreach ($allTweet as $item) {
@@ -74,6 +70,7 @@ class UserController extends AbstractController
         $form = $this->createForm(TweetType::class, $tweet);
         $form->handleRequest($request);
 
+
         //3-Prévoir ce qui doit se passer après la validation du formulaire (ajout dans la bdd)
         if($request->isXmlHttpRequest()){
             //Récupérer l'entityManager (doctrine)
@@ -82,6 +79,7 @@ class UserController extends AbstractController
 
             $iduser = $repository->findOneBy(['id' =>$userid]);
             $tweet->setUsers($iduser);
+            $tweet->setNombreLike(0);
 
             $uploadedFile = $form->get('image')->getData();
             dump($uploadedFile);
@@ -105,10 +103,11 @@ class UserController extends AbstractController
         <br>";
 
             $this->addFlash('success', 'succès');
-            return new JsonResponse($tweet->getImage());
+            return new JsonResponse($html);
 
 
         }
+
 
 
 

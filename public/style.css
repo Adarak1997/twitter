@@ -1,6 +1,7 @@
 @import url('css/homepage.css');
+@import url('css/slide_bar.css');
+@import url('css/feed.css');
 
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 body {
     background-color: #000;
@@ -19,7 +20,7 @@ button {
     border: none;
 }
 
-.h1, h2, h3, h4, h5, strong, p, li, label {
+h1, h2, h3, h4, h5, strong, p, i, li, label {
     color: #fff;
 }
 

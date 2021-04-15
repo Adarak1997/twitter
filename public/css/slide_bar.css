@@ -1,0 +1,115 @@
+/**** SLIDE BAR CSS ****/
+
+.slide_bar {
+    width: 33%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    border-right: 1px solid #404040;
+}
+
+/** MENU CSS **/
+
+.slide_bar .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 300px;
+    padding: 20px;
+}
+
+.slide_bar .menu img {
+    width: 15%;
+    margin-bottom: 40px;
+}
+
+.slide_bar .menu .list_link {
+    margin-bottom: auto;
+}
+
+.slide_bar .menu .list_link .item {
+    margin-bottom: 15px;
+    font-size: 20px;
+    border-radius: 30px;
+    -webkit-transition: all 0.3s;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    min-width: 160px;
+}
+
+.slide_bar .menu .list_link .item i {
+    margin-right: 20px;
+    font-size: 24px;
+    min-width: 28px;
+}
+
+.slide_bar .menu .list_link .item p {
+    margin: 0 auto 0 0;
+}
+
+.slide_bar .menu .list_link .item:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.slide_bar .menu .list_link .item:hover i {
+    color: #008dc2;
+}
+.slide_bar .menu .list_link .item:hover p {
+    color: #008dc2;
+}
+
+/** END MENU CSS **/
+
+
+/** PROFIL CSS **/
+
+.slide_bar .menu .profil {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.slide_bar .menu .profil .icon {
+    width: 60px;
+    height: 60px;
+    background-color: #008dc2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px;
+}
+
+.slide_bar .menu .profil .icon img {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+
+.slide_bar .menu .profil .name {
+    margin-left: 20px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.slide_bar .menu .profil .name h3 {
+    font-size: 16px;
+}
+
+.slide_bar .menu .profil .name h5 {
+    font-size: 16px;
+    color: #434343;
+}
+
+/** END MENU CSS **/
+
+
+/**** END SLIDE BAR CSS ****/

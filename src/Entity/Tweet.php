@@ -39,6 +39,11 @@ class Tweet
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nombre_like;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +81,18 @@ class Tweet
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    public function getNombreLike(): ?int
+    {
+        return $this->nombre_like;
+    }
+
+    public function setNombreLike(int $nombre_like): self
+    {
+        $this->nombre_like = $nombre_like;
 
         return $this;
     }

@@ -1,54 +1,53 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{{ app.user.username }}
+    {#{{ app.user.username }}#}
 
-{{ app.user.birthdate |date("m/d/Y") }}
+    {#{{ app.user.birthdate |date("m/d/Y") }}#}
 
-    <div class="card">
-    <div class="card-header">
-        Publiez votre tweet
-    </div>
-    <div class="card-body">
-        {{ form_start(form, {'attr': {'id': 'formID'}}) }}
+    {#    <div class="card">#}
+    {#    <div class="card-header">#}
+    {#        Publiez votre tweet#}
+    {#    </div>#}
+    {#    <div class="card-body">#}
 
-        {{ form_end(form) }}
+    {#    </div>#}
+    {#    </div>#}
 
-        <p id="reussite" style="background-color: black">réussite</p>
-    </div>
-    </div>
+    {% include '_partials/slider_bar.html.twig' %}
 
-    <div id="fil_actualite">
-    <h2 style="text-align: center;margin-top: 2%">Fil d'actualité</h2>
-    <br>
+    <section class="feed">
+        <div class="title">
+            <h1>Accueil</h1>
+        </div>
+        <div class="whats_up">
+            <div class="icon">
+                <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+            </div>
+            <div class="tweet_form">
+                {{ form_start(form, {'attr': {'id': 'formID'}}) }}
+                {{ form_row(form.text) }}
+                <div class="form_row d-flex">
+                    <div class="file_wrapper">
+                        <i class="fa fa-image"></i>
+                        {{ form_row(form.image) }}
+                    </div>
+                    <div class="button" style="margin-left: auto">
+                        {{ form_row(form.submit) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
 
-    {% for tweet in tweets %}
-
-    <div id="actualite">
-        <p style="font-weight: bold; margin-top: 2%">
-
-        <img src="{{ asset('image_tweet/avatar_default.png') }}" alt="Avatar" class="avatar">
-        {{ app.user.username }}</p>
-        <p style="background-color: black">{{ tweet.text }}</p>
-        {% if tweet.image != null %}
-        <img src="{{ asset('image_tweet/'~tweet.image) }}" class="image_tweet">
-
-        {% endif %}
-
-
-    </div>
-        <br>
-    {% endfor %}
-    </div>
-
-
-
-
-    <section class="footer" style="position: relative">
-        <div class="container text-center">
-            <h2>Twitter</h2>
-            <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>
         </div>
     </section>
+
+    {#    <section class="footer">#}
+    {#        <div class="container text-center">#}
+    {#            <h2>Twitter</h2>#}
+    {#            <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>#}
+    {#        </div>#}
+    {#    </section>#}
+
 
     {% block javascripts %}
 
@@ -59,25 +58,26 @@
                 e.preventDefault();
 
                 var formulaire = $(this);
+
                 var post_type = formulaire.attr('method');
                 var post_url = formulaire.attr('action');
-                var post_data = formulaire.serialize();
-
+                var post_data = new FormData(formulaire[0]);
+                console.log(post_data);
 
                 $.ajax({
                     type: post_type,
                     url: post_url,
                     data: post_data,
-                    success: function(data) {
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function() {
 
-                        alert(data);
-
+                        $('#formID')[0].reset();
                     }
                 });
 
             });
         </script>
     {% endblock %}
-{% endblock%}
-
-
+{% endblock %}

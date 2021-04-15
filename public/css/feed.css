@@ -1,0 +1,100 @@
+.feed {
+    margin-left: 33%;
+    width: 33%;
+    height: 100vh;
+    border-right: 1px solid #404040;
+}
+
+.feed .title {
+    border-bottom: 1px solid #404040;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.feed .title h1 {
+    font-size: 22px;
+}
+
+.feed .whats_up {
+    padding: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    border-bottom: 1px solid #404040;
+}
+
+.feed .whats_up .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #008dc2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px;
+}
+
+.feed .whats_up .icon img {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.feed .whats_up .tweet_form {
+    width: 100%;
+    padding-left: 20px;
+}
+
+.feed .whats_up .tweet_form #tweet_text {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #404040;
+    margin-bottom: 20px;
+    border-radius: 0;
+    padding: 20px 0 10px 0;
+
+}
+
+.feed .whats_up .tweet_form input::placeholder {
+    color: #6f6f6f;
+    font-size: 20px;
+}
+
+.file_wrapper {
+    height: 35px;
+    width: 35px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: transparent;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all 0.3s;
+}
+
+.file_wrapper {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.file_wrapper i {
+    color: #008dc2;
+}
+
+.file_input {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    font-size:50px;
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}
