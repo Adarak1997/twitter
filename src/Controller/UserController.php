@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Like;
 use App\Entity\Tweet;
 use App\Form\TweetType;
+use App\Repository\TweetRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -25,13 +27,44 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user_index")
+     * @Route("/user", name="user_like")
      */
-    public function index(): Response
+    public function user_like(Request $request, TweetRepository $repository,UserInterface $user, UsersRepository $repositoryuser)
     {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
+
+
+
+        $idtweet = $request->request->get('idtweet');
+        $like = $request->request->get('like');
+        $tweet = $repository->findOneBy(['id' =>$idtweet]);
+
+
+
+        $relationlike = new Like();
+
+        $userid = $user->getId();
+
+        $user = $repositoryuser->findOneBy(['id' =>$userid]);
+
+        if($request->isXmlHttpRequest()){
+
+            $em = $this->getDoctrine()->getManager();
+
+            $test = $tweet->getNombreLike();
+
+
+            $test += $like;
+            $tweet->setNombreLike($test);
+
+
+            $relationlike->setTweet($tweet);
+            $relationlike->setUser($user);
+            $em->persist($tweet);
+            $em->persist($relationlike);
+            $em->flush();
+            return new JsonResponse($tweet);
+        }
+
     }
 
     /**
@@ -47,19 +80,47 @@ class UserController extends AbstractController
 
         $allTweet = $this->getDoctrine()->getRepository(Tweet::class)->findBy(['users' => $userid ]);
 
-        $html = " <h2 style='text-align: center;margin-top: 2%'>Fil d'actualité</h2> <br>";
+        $html = "";
 
 
         foreach ($allTweet as $item) {
-            $html .= "<div id='actualite'>
-        <p style='font-weight: bold; margin-top: 2%'>
-      <img src='' alt='Avatar' class='avatar'>
-        {{ app.user.username }}</p>
-        <p style='background-color: black'>".$item->getText()."</p>
+            $html .= "
 
+            <div class='tweet'>
+                <div class='icon''>
+                    <img src='/img/icon/twitter_white.png' class='img-fluid'>
+                </div>
+                <div class='content'>
+                    <div class='author'>
+                        <h3 class='pseudo'>".$item->getText()." <strong>@Nom_du_compte</strong></h3>
+                        <p class='mx-1'>·</p>
+                        <p>14/03/2021</p>
+                    </div>
+                    <div class='text w-100'>
+                        <p class='text-justify'>".$item->getText()."</p>
+                    </div>";
 
-    </div>
-        <br>";
+            if($item->getImage() != null) {
+
+                $html .="<div class='img'>
+                        <img src='/image_tweet/".$item->getImage()."'>
+                    </div>";
+
+            }
+
+            $html .= "
+                    <div class='interacting'>
+                        <div class='item'>
+                            <p><i class='fa fa-comment'></i>14</p>
+                        </div>
+                        <div class='item'>
+                            <p><a href='dashboard.html.twig'><i class='fa fa-heart'></i></a>".$item->getNombreLike()."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            ";
         }
 
 
@@ -92,15 +153,43 @@ class UserController extends AbstractController
             $em->persist($tweet);
             $em->flush();
 
-            $html .= "<div id='actualite'>
-        <p style='font-weight: bold; margin-top: 2%'>
-      <img src='' alt='Avatar' class='avatar'>
-        {{ app.user.username }}</p>
-        <p style='background-color: black'>".$tweet->getText()."</p>
-    
+            $html .=  "
 
-    </div>
-        <br>";
+            <div class='tweet'>
+                <div class='icon''>
+                    <img src='/img/icon/twitter_white.png' class='img-fluid'>
+                </div>
+                <div class='content'>
+                    <div class='author'>
+                        <h3 class='pseudo'>".$tweet->getText()." <strong>@Nom_du_compte</strong></h3>
+                        <p class='mx-1'>·</p>
+                        <p>14/03/2021</p>
+                    </div>
+                    <div class='text w-100'>
+                        <p class='text-justify'>".$tweet->getText()."</p>
+                    </div>";
+
+            if($tweet->getImage() != null) {
+                $html .= "<div class='img'>
+                        <img src='/image_tweet/".$tweet->getImage()."'>
+                    </div>";
+
+            }
+
+            $html .= "
+                    <div class='interacting'>
+                        <div class='item'>
+                            <p><i class='fa fa-comment'></i>14</p>
+                        </div>
+                        <div class='item'>
+                            <p><a href='dashboard.html.twig'><i class='fa fa-heart'></i></a>".$tweet->getNombreLike()."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            ";
+
 
             $this->addFlash('success', 'succès');
             return new JsonResponse($html);

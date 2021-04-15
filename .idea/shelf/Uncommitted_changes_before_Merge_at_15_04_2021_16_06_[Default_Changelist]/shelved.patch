@@ -1,0 +1,18 @@
+Index: templates/user/dashboard.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% extends 'base.html.twig' %}\r\n{% block body %}\r\n    {#{{ app.user.username }}#}\r\n\r\n    {#{{ app.user.birthdate |date(\"m/d/Y\") }}#}\r\n\r\n    {#    <div class=\"card\">#}\r\n    {#    <div class=\"card-header\">#}\r\n    {#        Publiez votre tweet#}\r\n    {#    </div>#}\r\n    {#    <div class=\"card-body\">#}\r\n\r\n    {#    </div>#}\r\n    {#    </div>#}\r\n\r\n    {% include '_partials/slider_bar.html.twig' %}\r\n\r\n    <section class=\"feed\">\r\n        <div class=\"title\">\r\n            <h1>Accueil</h1>\r\n        </div>\r\n        <div class=\"whats_up\">\r\n            <div class=\"icon\">\r\n                <img src=\"{{ asset('img/icon/twitter_white.png') }}\" class=\"img-fluid\">\r\n            </div>\r\n            <div class=\"tweet_form\">\r\n                {{ form_start(form, {'attr': {'id': 'formID'}}) }}\r\n                {{ form_row(form.text) }}\r\n                <div class=\"form_row d-flex\">\r\n                    <div class=\"file_wrapper\">\r\n                        <i class=\"fa fa-image\"></i>\r\n                        {{ form_row(form.image) }}\r\n                    </div>\r\n                    <div class=\"button\" style=\"margin-left: auto\">\r\n                        {{ form_row(form.submit) }}\r\n                    </div>\r\n                </div>\r\n                {{ form_end(form) }}\r\n            </div>\r\n\r\n        </div>\r\n    </section>\r\n\r\n    {#    <section class=\"footer\">#}\r\n    {#        <div class=\"container text-center\">#}\r\n    {#            <h2>Twitter</h2>#}\r\n    {#            <p>Hervé HENRY - Marc DAVID - Sydney MURAT</p>#}\r\n    {#        </div>#}\r\n    {#    </section>#}\r\n\r\n\r\n    {% block javascripts %}\r\n\r\n        <script>\r\n\r\n            $('#reussite').hide();\r\n            $('#formID').on('submit', function(e) {\r\n                e.preventDefault();\r\n\r\n                var formulaire = $(this);\r\n\r\n                var post_type = formulaire.attr('method');\r\n                var post_url = formulaire.attr('action');\r\n                var post_data = new FormData(formulaire[0]);\r\n                console.log(post_data);\r\n\r\n                $.ajax({\r\n                    type: post_type,\r\n                    url: post_url,\r\n                    data: post_data,\r\n                    processData: false,\r\n                    contentType: false,\r\n                    cache: false,\r\n                    success: function() {\r\n\r\n                        $('#formID')[0].reset();\r\n                    }\r\n                });\r\n\r\n            });\r\n        </script>\r\n    {% endblock %}\r\n{% endblock %}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- templates/user/dashboard.html.twig	(revision be11c19ec47746f43d45204a407054842a5ab5a5)
++++ templates/user/dashboard.html.twig	(date 1618495551772)
+@@ -11,7 +11,7 @@
+     {#    <div class="card-body">#}
+ 
+     {#    </div>#}
+-    {#    </div>#}
++    {#    </div>#}git
+ 
+     {% include '_partials/slider_bar.html.twig' %}
+ 

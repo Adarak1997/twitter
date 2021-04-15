@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TweetRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -43,6 +45,16 @@ class Tweet
      * @ORM\Column(type="integer")
      */
     private $nombre_like;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="tweet")
+     */
+    private $likes;
+
+    public function __construct()
+    {
+        $this->likes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -93,6 +105,36 @@ class Tweet
     public function setNombreLike(int $nombre_like): self
     {
         $this->nombre_like = $nombre_like;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setTweet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getTweet() === $this) {
+                $like->setTweet(null);
+            }
+        }
 
         return $this;
     }

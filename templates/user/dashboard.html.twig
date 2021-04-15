@@ -24,7 +24,10 @@
                 <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
             </div>
             <div class="tweet_form">
+
                 {{ form_start(form, {'attr': {'id': 'formID'}}) }}
+
+
                 {{ form_row(form.text) }}
                 <div class="form_row d-flex">
                     <div class="file_wrapper">
@@ -37,6 +40,48 @@
                 </div>
                 {{ form_end(form) }}
             </div>
+
+        </div>
+        <div class="intersection"></div>
+        <div class="news_feed">
+            {% for tweet in tweets%}
+
+            <div class="tweet">
+                <input type="hidden" id="idtweet" value="{{ tweet.id }}">
+                <div class="icon">
+                    <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <h3 class="pseudo"> Hervé Henry<strong>@Nom_du_compte</strong></h3>
+                        <p class="mx-1">·</p>
+                        <p>14/03/2021</p>
+                    </div>
+                    <div class="text w-100">
+                        <p class="text-justify">{{ tweet.text }}</p>
+                    </div>
+                    {% if tweet.image != null %}
+                    <div class="img">
+                        <img src="{{ asset('image_tweet/'~tweet.image) }}">
+                    </div>
+                    {% endif %}
+                    <div class="interacting">
+                        <div class="item">
+                            <p><i class="fa fa-comment"></i>14</p>
+                        </div>
+                        <div class="item">
+                            <p><a id="like"><i class="fa fa-heart"></i></a>{{ tweet.nombreLike}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="trend">
+        <div class="research">
 
         </div>
     </section>
@@ -71,13 +116,36 @@
                     processData: false,
                     contentType: false,
                     cache: false,
-                    success: function() {
+                    success: function(data) {
 
+                        $('.news_feed').html(data);
                         $('#formID')[0].reset();
                     }
                 });
 
             });
+
+                $('#like').on('click', function (e) {
+                    e.preventDefault();
+
+                    var idtweet = $('#idtweet').val();
+
+
+
+                    var like = 1;
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ path('user_like') }}',
+                        data: 'idtweet=' + idtweet + '&like=' + like,
+
+                        success: function(data) {
+
+
+                        }
+                    });
+
+                })
         </script>
     {% endblock %}
 {% endblock %}

@@ -1,0 +1,9 @@
+.trend {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 33%;
+    height: 100vh;
+    border-left: 1px solid #404040;
+}
