@@ -1,0 +1,104 @@
+<section class="feed">
+    <div class="title">
+        <h1>Accueil</h1>
+    </div>
+    <div class="whats_up">
+        <div class="icon">
+            <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+        </div>
+        <div class="tweet_form">
+            {{ form_start(form) }}
+            {{ form_row(form.text) }}
+            <div class="form_row d-flex">
+                <div class="file_wrapper">
+                    <i class="fa fa-image"></i>
+                    {{ form_row(form.image) }}
+                </div>
+                <div class="button" style="margin-left: auto">
+                    {{ form_row(form.submit) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <div class="intersection"></div>
+    <div class="news_feed">
+        <div class="tweet">
+            <a class="absolute_link" href="#"></a>
+            <div class="icon">
+                <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+            </div>
+            <div class="content">
+                <div class="author">
+                    <h3 class="pseudo">Pseudonyme <strong>@Nom_du_compte</strong></h3>
+                    <p class="mx-1">·</p>
+                    <p>14/03/2021</p>
+                </div>
+                <div class="text">
+                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque ultricies lorem,
+                        eget congue nisi egestas ut. Duis blandit orci ac augue viverra, id gravida odio mattis.
+                        Aenean ut metus consectetur ipsum viverra finibus vitae quis diam.</p>
+                </div>
+                <div class="interacting">
+                    <div class="item">
+                        <p><i class="fa fa-comment"></i>3</p>
+                    </div>
+                    <div class="item">
+                        <p><i class="fa fa-heart"></i>18</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tweet">
+            <div class="icon">
+                <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+            </div>
+            <div class="content">
+                <div class="author">
+                    <h3 class="pseudo">Pseudonyme <strong>@Nom_du_compte</strong></h3>
+                    <p class="mx-1">·</p>
+                    <p>14/03/2021</p>
+                </div>
+                <div class="text">
+                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque ultricies lorem,
+                        eget congue nisi egestas ut.</p>
+                </div>
+                <div class="interacting">
+                    <div class="item">
+                        <p><i class="fa fa-comment"></i>14</p>
+                    </div>
+                    <div class="item">
+                        <p><i class="fa fa-heart"></i>58</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tweet">
+            <div class="icon">
+                <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+            </div>
+            <div class="content">
+                <div class="author">
+                    <h3 class="pseudo">Pseudonyme <strong>@Nom_du_compte</strong></h3>
+                    <p class="mx-1">·</p>
+                    <p>14/03/2021</p>
+                </div>
+                <div class="text">
+                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque ultricies lorem,
+                        eget congue nisi egestas ut.</p>
+                </div>
+                <div class="img">
+                    <img src="{{ asset('img/core-img/bg_img_hompage.png') }}">
+                </div>
+                <div class="interacting">
+                    <div class="item">
+                        <p><i class="fa fa-comment"></i>14</p>
+                    </div>
+                    <div class="item">
+                        <p><i class="fa fa-heart"></i>58</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
