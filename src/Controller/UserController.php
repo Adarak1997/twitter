@@ -245,7 +245,7 @@ class UserController extends AbstractController
             $em->remove($compte);
             $em->flush();
         }
-        return $this->redirectToRoute("inscription");
+        return $this->redirectToRoute("homepage");
     }
 
     /**

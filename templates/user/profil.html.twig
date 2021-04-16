@@ -1,12 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{{ app.user.username }}
-{{ app.user.firstname }}
-{{ app.user.name }}
-{{ app.user.email }}
-{{ app.user.birthdate |date("m/d/Y") }}
+
+    {% include '_partials/slider_bar.html.twig' %}
+
+    <section class="feed">
+        <div class="title">
+            <h1>Tweeter</h1>
+        </div>
+        <div class="comment">
+            <div class="tweet">
+                <div class="icon">
+                    <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <h3 class="pseudo">Pseudonyme <br><strong>@Nom_du_compte</strong></h3>
+                    </div>
+                    <div class="edit_profil d-flex flex-row justify-content-between">
+                        <a href="{{ path('user_update', {'id': app.user.id}) }}" class="btn-theme">Editer</a>
+                        <a href="{{ path('user_delete', {'id': app.user.id}) }}" class="btn-theme">Supprimer compte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trend">
+        <div class="research">
+
+        </div>
+    </section>
+
 <br>
-<a href="{{ path('user_update', {'id': app.user.id}) }}">Editer</a>
-    <a href="{{ path('user_delete', {'id': app.user.id}) }}">Supprimer le compte</a>
 
 {% endblock %}

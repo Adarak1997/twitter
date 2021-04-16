@@ -85,7 +85,9 @@
 
                         success: function(data) {
 
-                            $('.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover i').css("background-color", "white");
+                            $('.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover i')
+                                .css("color", "red", "-webkit-text-stroke-color", "red")
+                            ;
 
                         }
                     });

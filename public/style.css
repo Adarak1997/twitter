@@ -11,10 +11,11 @@ body {
 
 a {
     color: #00acee;
+    text-decoration: none !important;
 }
 
 a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
     color: #0074a2;
 }
 
@@ -76,4 +77,14 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.edit_profil {
+    margin-left: auto;
+}
+
+.edit_profil .btn-theme {
+    padding: 10px 20px;
+    width: auto;
+    margin-right: 10px;
 }

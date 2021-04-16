@@ -216,13 +216,22 @@
     -webkit-text-stroke-color: #008dc2;
 }
 
-/*.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover p {*/
-   /* color: red;*/
-/*}*/
+.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover p {
+    color: red;
+}
 
-/*.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover i {*/
-/* color: red;*/
-/*}*/
+.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover i {
+ color: red;
+}
+
+.feed .news_feed .tweet .content .interacting .item.like:nth-child(1).active p {
+    color: red;
+}
+
+.feed .news_feed .tweet .content .interacting .item.like:nth-child(1).active i {
+    color: red;
+    -webkit-text-stroke-color: red;
+}
 
 /*.feed .news_feed .tweet .content .interacting .item:nth-child(1).active p {*/
 /*    color: #008dc2;*/

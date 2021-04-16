@@ -51,7 +51,11 @@ class RegistrationFormType extends AbstractType
             ->add('birthdate', DateType::class, [
                 'widget' => 'single_text',
             ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn-theme mt-3'
+                ]
+            ])
         ;
     }
 
