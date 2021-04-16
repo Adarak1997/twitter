@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Like;
 use App\Entity\Tweet;
 use App\Form\TweetType;
+use App\Repository\LikeRepository;
 use App\Repository\TweetRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,15 +30,13 @@ class UserController extends AbstractController
     /**
      * @Route("/user", name="user_like")
      */
-    public function user_like(Request $request, TweetRepository $repository,UserInterface $user, UsersRepository $repositoryuser)
+    public function user_like(Request $request, TweetRepository $repository,UserInterface $user, UsersRepository $repositoryuser, LikeRepository $likerepository)
     {
-
 
 
         $idtweet = $request->request->get('idtweet');
         $like = $request->request->get('like');
         $tweet = $repository->findOneBy(['id' =>$idtweet]);
-
 
 
         $relationlike = new Like();
@@ -46,15 +45,29 @@ class UserController extends AbstractController
 
         $user = $repositoryuser->findOneBy(['id' =>$userid]);
 
+        $likerepository = $this->getDoctrine()->getRepository(Like::class)->createQueryBuilder('l')
+            ->select('count(l.id)')
+            ->where('l.user = '. $userid)
+            ->andWhere('l.tweet = '. $idtweet)
+            ->getQuery()
+            ->getSingleScalarResult();
+        dump($likerepository);
+
         if($request->isXmlHttpRequest()){
 
             $em = $this->getDoctrine()->getManager();
 
             $test = $tweet->getNombreLike();
 
+            if($likerepository == "0"){
+                $test += $like;
+                $tweet->setNombreLike($test);
+            }else{
+                $test -= $like;
+                $tweet->setNombreLike($test);
+            }
 
-            $test += $like;
-            $tweet->setNombreLike($test);
+
 
 
             $relationlike->setTweet($tweet);
@@ -70,7 +83,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/dashboard", name="user_dashboard")
      */
-    public function user_dashboard(Request $request, UsersRepository $repository, UserInterface $user, UploaderHelper $uploaderHelper)
+    public function user_dashboard(Request $request, UsersRepository $repository, UserInterface $user, UploaderHelper $uploaderHelper, LikeRepository $likerepository)
     {
 
             $tweet = new Tweet();
@@ -79,6 +92,7 @@ class UserController extends AbstractController
             dump($userid);
 
         $allTweet = $this->getDoctrine()->getRepository(Tweet::class)->findBy(['users' => $userid ]);
+
 
         $html = "";
 
@@ -92,7 +106,7 @@ class UserController extends AbstractController
                 </div>
                 <div class='content'>
                     <div class='author'>
-                        <h3 class='pseudo'>".$item->getText()." <strong>@Nom_du_compte</strong></h3>
+                        <h3 class='pseudo'>Pseudonyme <strong>@Nom_du_compte</strong></h3>
                         <p class='mx-1'>·</p>
                         <p>14/03/2021</p>
                     </div>
@@ -161,7 +175,7 @@ class UserController extends AbstractController
                 </div>
                 <div class='content'>
                     <div class='author'>
-                        <h3 class='pseudo'>".$tweet->getText()." <strong>@Nom_du_compte</strong></h3>
+                        <h3 class='pseudo'>Pseudonyme <strong>@Nom_du_compte</strong></h3>
                         <p class='mx-1'>·</p>
                         <p>14/03/2021</p>
                     </div>
@@ -203,7 +217,8 @@ class UserController extends AbstractController
         //4-Afficher le formulaire via le twig (view)
         return $this->render('user/dashboard.html.twig', [
             'form' => $form->createView(),
-            'tweets' => $allTweet
+            'tweets' => $allTweet,
+            'user' => $userid
         ]);
 
     }

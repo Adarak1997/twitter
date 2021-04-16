@@ -2,6 +2,7 @@
 @import url('css/slide_bar.css');
 @import url('css/feed.css');
 @import url('css/trend.css');
+@import url('css/comment.css');
 
 
 body {
@@ -67,4 +68,12 @@ h1, h2, h3, h4, h5, strong, p, i, li, label {
 
 a:hover {
     color: #0074a2;
+}
+
+.absolute_link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

@@ -15,70 +15,12 @@
 
     {% include '_partials/slider_bar.html.twig' %}
 
-    <section class="feed">
-        <div class="title">
-            <h1>Accueil</h1>
-        </div>
-        <div class="whats_up">
-            <div class="icon">
-                <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
-            </div>
-            <div class="tweet_form">
 
-                {{ form_start(form, {'attr': {'id': 'formID'}}) }}
+    {% include '_partials/feed.html.twig' %}
+
+{#    {% include '_partials/tweet_comments.html.twig' %}#}
 
 
-                {{ form_row(form.text) }}
-                <div class="form_row d-flex">
-                    <div class="file_wrapper">
-                        <i class="fa fa-image"></i>
-                        {{ form_row(form.image) }}
-                    </div>
-                    <div class="button" style="margin-left: auto">
-                        {{ form_row(form.submit) }}
-                    </div>
-                </div>
-                {{ form_end(form) }}
-            </div>
-
-        </div>
-        <div class="intersection"></div>
-        <div class="news_feed">
-            {% for tweet in tweets%}
-
-            <div class="tweet">
-                <input type="hidden" id="idtweet" value="{{ tweet.id }}">
-                <div class="icon">
-                    <img src="{{ asset('img/icon/twitter_white.png') }}" class="img-fluid">
-                </div>
-                <div class="content">
-                    <div class="author">
-                        <h3 class="pseudo"> Hervé Henry<strong>@Nom_du_compte</strong></h3>
-                        <p class="mx-1">·</p>
-                        <p>14/03/2021</p>
-                    </div>
-                    <div class="text w-100">
-                        <p class="text-justify">{{ tweet.text }}</p>
-                    </div>
-                    {% if tweet.image != null %}
-                    <div class="img">
-                        <img src="{{ asset('image_tweet/'~tweet.image) }}">
-                    </div>
-                    {% endif %}
-                    <div class="interacting">
-                        <div class="item">
-                            <p><i class="fa fa-comment"></i>14</p>
-                        </div>
-                        <div class="item">
-                            <p><a id="like"><i class="fa fa-heart"></i></a>{{ tweet.nombreLike}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {% endfor %}
-        </div>
-    </section>
 
     <section class="trend">
         <div class="research">
@@ -125,10 +67,12 @@
 
             });
 
-                $('#like').on('click', function (e) {
+            function like(id) {
+            var idtweet = id;
+                $('#like' + idtweet).on('click', function (e) {
                     e.preventDefault();
 
-                    var idtweet = $('#idtweet').val();
+
 
 
 
@@ -141,11 +85,14 @@
 
                         success: function(data) {
 
+                            $('.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover i').css("background-color", "white");
 
                         }
                     });
 
-                })
+                });
+
+                }
         </script>
     {% endblock %}
 {% endblock %}

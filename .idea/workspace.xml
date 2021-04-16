@@ -23,6 +23,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/Service/UploaderHelper.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/user/search.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
@@ -1796,6 +1797,10 @@
       <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/dashboard.html.twig" afterDir="false" />
 >>>>>>> 78b4581319e1ac6504078cde89311c9a81cf0f6d
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/feed.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/feed.css" afterDir="false" />
+>>>>>>> origin/design
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -2012,7 +2017,11 @@
 >>>>>>> 78b4581319e1ac6504078cde89311c9a81cf0f6d
 =======
       <workItem from="1618407310267" duration="9481000" />
+<<<<<<< HEAD
       <workItem from="1618489715072" duration="5104000" />
+>>>>>>> origin/design
+=======
+      <workItem from="1618489715072" duration="11878000" />
 >>>>>>> origin/design
     </task>
     <servers />

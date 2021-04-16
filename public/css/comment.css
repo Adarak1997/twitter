@@ -1,0 +1,94 @@
+.feed .comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.feed .comment .tweet {
+    width: 100%;
+    height: auto;
+    padding: 10px 15px;
+    display: flex;
+    border-bottom: 1px solid #404040;
+    position: relative;
+}
+
+.feed .comment .tweet .content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 10px;
+}
+
+
+.feed .comment .tweet .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #008dc2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px;
+}
+
+.feed .comment .tweet .icon img {
+    width: 100%;
+    margin-bottom: 0;
+}
+.feed .comment .tweet .content .author {
+    display: flex;
+    flex-direction: row;
+}
+
+.feed .comment .tweet .content .author .pseudo {
+    width: 100%;
+    font-size: 17px;
+}
+
+.feed .comment .tweet .content .author .pseudo strong {
+    font-weight: 400;
+    color: #6E767D;
+    font-size: 16px;
+}
+
+.feed .comment .tweet .content .author p {
+    font-weight: 400;
+    color: #6E767D !important;
+}
+
+.feed .comment .tweet .content .img img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.feed .comment .tweet .content .interacting {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.feed .comment .tweet .content .interacting .item {
+    width: 20%;
+}
+
+.feed .comment .tweet .content .interacting .item i {
+    margin-right: 15px;
+}
+
+.feed .comment .tweet .date {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #404040;
+    color: #404040;
+    width: 100%;
+}
+
+.feed .comment .tweet .date p {
+    color: #404040;
+}

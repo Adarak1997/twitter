@@ -51,7 +51,10 @@
     margin-bottom: 20px;
     border-radius: 0;
     padding: 20px 0 10px 0;
-
+    color: #fff;
+}
+.feed .whats_up .tweet_form #tweet_text:focus {
+    box-shadow: none;
 }
 
 .feed .whats_up .tweet_form input::placeholder {
@@ -118,6 +121,12 @@
     padding: 10px 15px;
     display: flex;
     border-bottom: 1px solid #404040;
+    position: relative;
+    -webkit-transition: all 0.3s;
+}
+
+.feed .news_feed .tweet:hover {
+    background-color: #0e0e0e;
 }
 
 .feed .news_feed .tweet .content {
@@ -181,8 +190,47 @@
 
 .feed .news_feed .tweet .content .interacting .item {
     width: 20%;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.feed .news_feed .tweet .content .interacting .item p {
+    margin-right: auto;
+    width: 75px;
+    -webkit-transition: all 0.3s;
 }
 
 .feed .news_feed .tweet .content .interacting .item i {
     margin-right: 15px;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #6E767D;
+    -webkit-transition: all 0.3s;
 }
+
+.feed .news_feed .tweet .content .interacting .item:nth-child(1):hover p {
+    color: #008dc2;
+}
+
+.feed .news_feed .tweet .content .interacting .item:nth-child(1):hover i {
+    -webkit-text-stroke-color: #008dc2;
+}
+
+/*.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover p {*/
+   /* color: red;*/
+/*}*/
+
+/*.feed .news_feed .tweet .content .interacting .item:nth-child(2):hover i {*/
+/* color: red;*/
+/*}*/
+
+/*.feed .news_feed .tweet .content .interacting .item:nth-child(1).active p {*/
+/*    color: #008dc2;*/
+/*}*/
+
+/*.feed .news_feed .tweet .content .interacting .item:nth-child(1).active i {*/
+/*    color: #008dc2;*/
+/*    -webkit-text-stroke-color: #008dc2;*/
+/*}*/
+
+
